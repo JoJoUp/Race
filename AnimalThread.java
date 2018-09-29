@@ -1,22 +1,22 @@
 public class AnimalThread extends Thread {
     public String name;
     public int priority;
+    int countMetrs = 0;
 
     public AnimalThread(String name, int priority) {
         this.name = name;
         this.priority = priority;
+        this.setName(name);
     }
 
     public void run() {
-
-        int countMetrs = 0;
         do {
-            countMetrs++;
+            countMetrs+=getPriority();
             if (countMetrs % 100 == 0) {
                 System.out.println(name + " пробежал " + countMetrs + " метров");
             }
-            if(countMetrs==5000){
-                setPriority(priority);
+            if(countMetrs==6000){
+                this.setPriority(priority);
             }
 
 
